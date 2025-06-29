@@ -44,20 +44,24 @@ export default function HomeScreen() {
         </View>
       </View>
 
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Explore</Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {['All', 'Luxury', 'Budget', 'Beach', 'Mountain'].map((category, index) => (
-            <TouchableOpacity 
-              key={index} 
-              style={styles.category}
-              onPress={() => router.push('/rooms')}
-            >
-              <Text>{category}</Text>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
-      </View>
+  <View style={styles.section}>
+  <Text style={styles.sectionTitle}>Explore</Text>
+  <FlatList
+    horizontal
+    showsHorizontalScrollIndicator={false}
+    data={['All', 'Luxury', 'Budget', 'Beach', 'Mountain']}
+    keyExtractor={( index) => index.toString()}
+    renderItem={({ item }) => (
+      <TouchableOpacity 
+        style={styles.category}
+        onPress={() => router.push('/rooms')}
+      >
+      <Text>{item}</Text>
+      </TouchableOpacity>
+    )}
+    contentContainerStyle={styles.categoriesContainer}
+  />
+</View>
 
       <View style={styles.section}>
         <View style={styles.sectionHeader}>
@@ -171,14 +175,24 @@ const styles = StyleSheet.create({
     color: 'white', 
     fontSize: 16 
   },
-  section: {
-    padding: 16
+section: {
+    marginVertical: 16,
   },
   sectionTitle: {
-    fontSize: 20, 
-    fontWeight: 'bold', 
-    marginBottom: 16,
-    color: '#333'
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 8,
+    paddingHorizontal: 16,
+  },
+  categoriesContainer: {
+    paddingHorizontal: 16,
+  },
+  category: {
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    marginRight: 8,
+    backgroundColor: '#f0f0f0',
+    borderRadius: 20,
   },
   sectionHeader: {
     flexDirection: 'row',
