@@ -187,13 +187,6 @@ section: {
   categoriesContainer: {
     paddingHorizontal: 16,
   },
-  category: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    marginRight: 8,
-    backgroundColor: '#f0f0f0',
-    borderRadius: 20,
-  },
   sectionHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
