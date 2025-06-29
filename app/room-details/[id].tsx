@@ -39,14 +39,6 @@ export default function RoomDetails() {
     );
   }
 
-  if (!room) {
-    return (
-      <View style={styles.errorContainer}>
-        <Text style={styles.errorText}>Failed to load room details</Text>
-      </View>
-    );
-  }
-
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
