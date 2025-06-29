@@ -50,6 +50,7 @@ export default function AccountScreen() {
 
    <View style={s.section}>
   <Text style={s.title}>Upcoming</Text>
+  
   <FlatList
     data={bookings}
     keyExtractor={(b) => b.id.toString()}
@@ -63,7 +64,7 @@ export default function AccountScreen() {
         <Ionicons name="chevron-forward" size={20} color="#95a5a6" />
       </TouchableOpacity>
     )}
-    scrollEnabled={false} // Disable scrolling since it's in a vertical list
+    scrollEnabled={false}
   />
 </View>
 
