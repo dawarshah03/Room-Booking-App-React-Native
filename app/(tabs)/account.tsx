@@ -11,7 +11,7 @@ export default function AccountScreen() {
     email: "ahmed.khan@gmail.com",
     membership: "Gold",
     points: 1250,
-    avatar: "https://ichef.bbci.co.uk/images/ic/1920x1080/p0784g6m.jpg"
+    pic: "https://ichef.bbci.co.uk/images/ic/1920x1080/p0784g6m.jpg"
   };
 
   const bookings = [
@@ -22,7 +22,7 @@ export default function AccountScreen() {
   return (
     <ScrollView style={s.container}>
       <View style={s.header}>
-        <Image source={{ uri: user.avatar }} style={s.avatar} />
+        <Image source={{ uri: user.pic }} style={s.pic} />
         <View>
           <Text style={s.name}>{user.name}</Text>
           <Text style={s.email}>{user.email}</Text>
@@ -48,19 +48,24 @@ export default function AccountScreen() {
         </View>
       </View>
 
-      <View style={s.section}>
-        <Text style={s.title}>Upcoming</Text>
-        {bookings.map(b => (
-          <TouchableOpacity key={b.id} style={s.booking}>
-            <Ionicons name="calendar" size={20} color="#2ecc71" />
-            <View style={s.bookingInfo}>
-              <Text style={s.hotel}>{b.hotel}</Text>
-              <Text style={s.date}>{b.date}</Text>
-            </View>
-            <Ionicons name="chevron-forward" size={20} color="#95a5a6" />
-          </TouchableOpacity>
-        ))}
-      </View>
+   <View style={s.section}>
+  <Text style={s.title}>Upcoming</Text>
+  <FlatList
+    data={bookings}
+    keyExtractor={(b) => b.id.toString()}
+    renderItem={({ item: b }) => (
+      <TouchableOpacity style={s.booking}>
+        <Ionicons name="calendar" size={20} color="#2ecc71" />
+        <View style={s.bookingInfo}>
+          <Text style={s.hotel}>{b.hotel}</Text>
+          <Text style={s.date}>{b.date}</Text>
+        </View>
+        <Ionicons name="chevron-forward" size={20} color="#95a5a6" />
+      </TouchableOpacity>
+    )}
+    scrollEnabled={false} // Disable scrolling since it's in a vertical list
+  />
+</View>
 
       <View style={s.section}>
         <Text style={s.title}>Settings</Text>
@@ -98,7 +103,7 @@ const s = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 24
   },
-  avatar: {
+  pic: {
     width: 80,
     height: 80,
     borderRadius: 40,
