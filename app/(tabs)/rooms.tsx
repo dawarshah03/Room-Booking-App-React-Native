@@ -43,11 +43,6 @@ export default function RoomsScreen() {
         </TouchableOpacity>
       )}
       keyExtractor={(item) => item.id}
-      ListEmptyComponent={
-        <View style={styles.emptyContainer}>
-          <Text>No rooms available</Text>
-        </View>
-      }
     />
   );
 }
