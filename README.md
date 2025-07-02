@@ -1,8 +1,5 @@
 Mockup API Data:
 
-API endpoint
-https://685ef719c55df675589d3933.mockapi.io/:endpoint
-
 Data must be an array and a valid JSON.
 
 
